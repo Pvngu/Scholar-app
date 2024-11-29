@@ -45,6 +45,10 @@ class DepartamentoResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('nombre_corto'),
+                TextColumn::make('maestros_count')
+                    ->label('Personal')
+                    ->sortable()
+                    ->counts('maestros'),
             ])
             ->filters([
                 //

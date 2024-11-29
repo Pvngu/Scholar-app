@@ -15,6 +15,7 @@ use Filament\Forms\Components\TextInput;
 use App\Filament\Exports\MaestroExporter;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Actions\ExportAction;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\ExportBulkAction;
 use Filament\Actions\Exports\Enums\ExportFormat;
@@ -121,6 +122,7 @@ class MaestroResource extends Resource
                     TextColumn::make(name: 'tarjeta_recursos_humanos')
                         ->searchable(),
                     TextColumn::make(name: 'fecha_nacimiento')
+                        ->date()
                         ->searchable(),
                     TextColumn::make(name: 'departamento.nombre_departamento')
                         ->label('Área Administrativa')
@@ -133,7 +135,22 @@ class MaestroResource extends Resource
                         ->searchable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('area_administrativa')
+                ->label('Departamento')
+                ->options(Departamento::all()->pluck('nombre_departamento', 'id'))
+                ->native(false)
+                ->searchable(),
+                SelectFilter::make('grado_estudios')
+                ->label('Grado de Estudios')
+                ->options([
+                    'LIC.' => 'LIC.',
+                    'ING.' => 'ING.',
+                    'QUI.' => 'QUI.',
+                    'MAE.' => 'MAE.',
+                    'DOC.' => 'DOC.',
+                    'M.C.' => 'M.C.',
+                ])
+                ->native(false)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
