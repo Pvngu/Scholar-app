@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -8,12 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Maestro extends Model
 {
     protected $table = 'maestros';
-    protected $primaryKey = 'numero_personal';
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $fillable = [
-        'numero_personal',
         'apellido_paterno',
         'apellido_materno',
         'nombres',
@@ -36,6 +31,6 @@ class Maestro extends Model
 
     public function departamento()
     {
-        return $this->belongsTo(Departamento::class, 'area_administrativa', 'numero_departamento');
+        return $this->belongsTo(Departamento::class, 'area_administrativa');
     }
 }
