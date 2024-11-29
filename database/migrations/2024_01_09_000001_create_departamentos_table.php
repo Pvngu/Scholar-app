@@ -10,10 +10,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departamentos', function (Blueprint $table) {
-            $table->integer('numero_departamento')->primary();
+            $table->id();
             $table->string('nombre_departamento', 70);
             $table->string('nombre_corto', 50);
-            $table->integer('personal');
             $table->timestamps();
         });
     }

@@ -2,28 +2,38 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DepartamentoResource\Pages;
-use App\Filament\Resources\DepartamentoResource\RelationManagers;
-use App\Models\Departamento;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Tables\Columns;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Departamento;
+use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\DepartamentoResource\Pages;
+use App\Filament\Resources\DepartamentoResource\RelationManagers;
 
 class DepartamentoResource extends Resource
 {
     protected static ?string $model = Departamento::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('nombre_departamento')
+                    ->label('Nombre')
+                    ->required()
+                    ->maxLength(255),
+                TextInput::make('nombre_corto')
+                    ->label('Nombre Corto')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +41,9 @@ class DepartamentoResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nombre_departamento')
+                    ->searchable(),
+                TextColumn::make('nombre_corto'),
             ])
             ->filters([
                 //
