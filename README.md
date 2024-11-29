@@ -4,7 +4,7 @@
 ![App Screenshot](/public/screenshots/login.png)
 
 ## Departments
-![App Screenshot](/public/screenshots/login.png)
+![App Screenshot](/public/screenshots/departments.png)
 
 ## Teachers
 ![App Screenshot](/public/screenshots/teacher.png)
