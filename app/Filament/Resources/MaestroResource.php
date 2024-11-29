@@ -90,10 +90,13 @@ class MaestroResource extends Resource
         return $table
             ->columns([
                 TextColumn::make(name: 'apellido_paterno')
+                    ->sortable()
                     ->searchable(),
                     TextColumn::make(name: 'apellido_materno')
+                        ->sortable()
                         ->searchable(),
                     TextColumn::make(name: 'nombres')
+                        ->sortable()
                         ->searchable(),
                     TextColumn::make(name: 'grado_estudios')
                         ->searchable(),

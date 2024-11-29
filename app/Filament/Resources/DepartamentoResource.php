@@ -42,7 +42,8 @@ class DepartamentoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nombre_departamento')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('nombre_corto'),
             ])
             ->filters([
