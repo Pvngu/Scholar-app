@@ -9,12 +9,16 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use App\Filament\Exports\MaestroExporter;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use App\Filament\Resources\MaestroResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MaestroResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Actions\ExportBulkAction;
 
 class MaestroResource extends Resource
 {
@@ -123,10 +127,16 @@ class MaestroResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(MaestroExporter::class)
+                    ->columnMapping(false)
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+                ExportBulkAction::make()->exporter(MaestroExporter::class),
             ]);
     }
 
