@@ -122,7 +122,8 @@ class MaestroResource extends Resource
                         ->searchable(),
                     TextColumn::make(name: 'fecha_nacimiento')
                         ->searchable(),
-                    TextColumn::make(name: 'area_administrativa')
+                    TextColumn::make(name: 'departamento.nombre_departamento')
+                        ->label('Área Administrativa')
                         ->searchable(),
                     TextColumn::make(name: 'sexo')
                         ->searchable(),
