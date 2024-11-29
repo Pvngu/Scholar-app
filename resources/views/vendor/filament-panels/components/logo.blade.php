@@ -1,0 +1,1 @@
+<img src="{{asset('img/tecnm_logo.webp')}}" class="h-16" alt="Logo del tecnologico de tijuana">

@@ -1,0 +1,12 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+/* resources/css/filament/custom-theme.css */
+.fi-topbar > nav { 
+    @apply h-20 bg-blue-900 shadow-none ring-0;
+}
+ 
+.fi-sidebar-header {
+    @apply h-20 bg-blue-900 shadow-none ring-0;
+}
