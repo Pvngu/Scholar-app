@@ -7,18 +7,20 @@ use Filament\Tables;
 use App\Models\Maestro;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Departamento;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use App\Filament\Exports\MaestroExporter;
+use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\ExportBulkAction;
 use Filament\Actions\Exports\Enums\ExportFormat;
 use App\Filament\Resources\MaestroResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\MaestroResource\RelationManagers;
-use Filament\Tables\Actions\ExportBulkAction;
 
 class MaestroResource extends Resource
 {
@@ -59,11 +61,15 @@ class MaestroResource extends Resource
                     ->required(),
                 TextInput::make('tarjeta_recursos_humanos')
                     ->label('Tarjeta Recursos Humanos'),
-                TextInput::make('fecha_nacimiento')
+                DatePicker::make('fecha_nacimiento')
                     ->label('Fecha de Nacimiento')
+                    ->native(false)
                     ->required(),
-                TextInput::make('area_administrativa')
+                Select::make('area_administrativa')
                     ->label('Área Administrativa')
+                    ->options(Departamento::all()->pluck('nombre_departamento', 'id'))
+                    ->native(false)
+                    ->searchable()
                     ->required(),
                 Select::make('sexo')
                     ->label('Sexo')
@@ -85,6 +91,10 @@ class MaestroResource extends Resource
                     ->required(),
                 TextInput::make('lugar_nacimiento')
                     ->label('Lugar de Nacimiento')
+                    ->required(),
+                DatePicker::make('fecha_ingreso')
+                    ->label('Fecha de Ingreso')
+                    ->native(false)
                     ->required(),
             ]);
     }
