@@ -24,13 +24,11 @@ class MaestroExporter extends Exporter
             ExportColumn::make('curp'),
             ExportColumn::make('tarjeta_recursos_humanos'),
             ExportColumn::make('fecha_nacimiento'),
-            ExportColumn::make('area_administrativa'),
+            ExportColumn::make('departamento.nombre_departamento'),
             ExportColumn::make('sexo'),
             ExportColumn::make('estado_civil'),
             ExportColumn::make('lugar_nacimiento'),
             ExportColumn::make('fecha_ingreso'),
-            ExportColumn::make('created_at'),
-            ExportColumn::make('updated_at'),
         ];
     }
 
